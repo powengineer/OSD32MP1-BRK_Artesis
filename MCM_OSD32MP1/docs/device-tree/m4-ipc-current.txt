@@ -1,0 +1,15 @@
+191:			compatible = "st,stm32mp1-ipcc";
+4013:		mcuram2@10000000 {
+4020:		vdev0vring0@10040000 {
+4027:		vdev0vring1@10041000 {
+4034:		vdev0buffer@10042000 {
+4048:		mcuram@30000000 {
+4055:		retram@38000000 {
+4152:		ipcc = "/soc/mailbox@4c001000";
+4389:		m4_rproc = "/ahb/m4@10000000";
+4456:		mcuram2 = "/reserved-memory/mcuram2@10000000";
+4457:		vdev0vring0 = "/reserved-memory/vdev0vring0@10040000";
+4458:		vdev0vring1 = "/reserved-memory/vdev0vring1@10041000";
+4459:		vdev0buffer = "/reserved-memory/vdev0buffer@10042000";
+4461:		mcuram = "/reserved-memory/mcuram@30000000";
+4462:		retram = "/reserved-memory/retram@38000000";

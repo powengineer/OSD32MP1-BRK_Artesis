@@ -1,0 +1,4 @@
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+SRC_URI += "file://0001-ARM-dts-stm32-reserve-MCM-shared-DDR-region.patch"
+

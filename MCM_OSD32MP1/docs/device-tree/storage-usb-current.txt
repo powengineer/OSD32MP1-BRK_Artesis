@@ -1,0 +1,30 @@
+517:			sdmmc1_mx-0 {
+535:			sdmmc1_opendrain_mx-0 {
+560:			sdmmc1_sleep_mx-0 {
+1258:		mmc@58005000 {
+1259:			compatible = "st,stm32-sdmmc2\0arm,pl18x\0arm,primecell";
+1282:		mmc@58007000 {
+1283:			compatible = "st,stm32-sdmmc2\0arm,pl18x\0arm,primecell";
+1305:		usb@5800c000 {
+1316:		usb@5800d000 {
+1353:		usbphyc@5a006000 {
+1357:			compatible = "st,stm32mp1-usbphyc";
+2629:			mmc@48004000 {
+2630:				compatible = "st,stm32-sdmmc2\0arm,pl18x\0arm,primecell";
+2645:			usb-otg@49000000 {
+3839:				sdmmc@48004000 {
+3847:				usb-otg@49000000 {
+4180:		sdmmc1_pins_mx = "/soc/pinctrl@50002000/sdmmc1_mx-0";
+4181:		sdmmc1_opendrain_pins_mx = "/soc/pinctrl@50002000/sdmmc1_opendrain_mx-0";
+4182:		sdmmc1_sleep_pins_mx = "/soc/pinctrl@50002000/sdmmc1_sleep_mx-0";
+4243:		sdmmc1 = "/soc/mmc@58005000";
+4244:		sdmmc2 = "/soc/mmc@58007000";
+4246:		usbh_ohci = "/soc/usb@5800c000";
+4247:		usbh_ehci = "/soc/usb@5800d000";
+4250:		usbphyc = "/soc/usbphyc@5a006000";
+4251:		usbphyc_port0 = "/soc/usbphyc@5a006000/usb-phy@0";
+4252:		usbphyc_port1 = "/soc/usbphyc@5a006000/usb-phy@1";
+4327:		sdmmc3 = "/soc/bus@5c007000/mmc@48004000";
+4328:		usbotg_hs = "/soc/bus@5c007000/usb-otg@49000000";
+4437:		m4_sdmmc3 = "/ahb/m4@10000000/m4_system_resources/sdmmc@48004000";
+4438:		m4_usbotg_hs = "/ahb/m4@10000000/m4_system_resources/usb-otg@49000000";

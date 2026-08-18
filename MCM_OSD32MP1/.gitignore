@@ -1,0 +1,20 @@
+# Yocto build çıktıları
+openstlinux/build-openstlinuxweston-stm32mp1/
+openstlinux/.repo/
+openstlinux/layers/
+
+# M4 build çıktıları
+**/Debug/
+**/Release/
+
+# Yedekler
+backups/
+**/backups/
+
+# Derleme çıktıları
+*.o
+*.d
+*.elf
+*.map
+*.log
+*.pyc

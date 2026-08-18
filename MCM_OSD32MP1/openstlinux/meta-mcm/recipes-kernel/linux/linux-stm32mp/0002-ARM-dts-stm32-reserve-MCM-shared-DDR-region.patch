@@ -1,0 +1,25 @@
+From 741f320e09311b8f26774bae56ccc3888117703f Mon Sep 17 00:00:00 2001
+From: Fatih YARDIM <fatih_yardim@yahoo.com>
+Date: Fri, 7 Aug 2026 19:04:09 +0300
+Subject: [PATCH] ARM: dts: stm32: reserve MCM shared DDR region
+
+---
+ arch/arm/boot/dts/st/stm32mp157f-osd32mp1-brk-mcm.dts | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/arch/arm/boot/dts/st/stm32mp157f-osd32mp1-brk-mcm.dts b/arch/arm/boot/dts/st/stm32mp157f-osd32mp1-brk-mcm.dts
+index ac80ba105..f825e1e18 100644
+--- a/arch/arm/boot/dts/st/stm32mp157f-osd32mp1-brk-mcm.dts
++++ b/arch/arm/boot/dts/st/stm32mp157f-osd32mp1-brk-mcm.dts
+@@ -1153,3 +1153,11 @@ &cs_tpiu {
+ &dbg_bus {
+ 	status = "okay";
+ };
++
++&{/reserved-memory} {
++    mcm_shm: mcm-shm@d3000000 {
++        compatible = "shared-dma-pool";
++        reg = <0xd3000000 0x01000000>;
++        no-map;
++    };
++};

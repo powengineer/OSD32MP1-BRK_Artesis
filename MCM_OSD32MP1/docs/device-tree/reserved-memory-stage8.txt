@@ -1,0 +1,233 @@
+4003:	reserved-memory {
+4004-		#address-cells = <0x01>;
+4005-		#size-cells = <0x01>;
+4006-		ranges;
+4007-
+4008-		optee@de000000 {
+4009-			reg = <0xde000000 0x2000000>;
+4010-			no-map;
+4011-		};
+4012-
+4013-		mcuram2@10000000 {
+4014-			compatible = "shared-dma-pool";
+4015-			reg = <0x10000000 0x40000>;
+4016-			no-map;
+4017-			phandle = <0x6e>;
+4018-		};
+4019-
+4020-		vdev0vring0@10040000 {
+4021-			compatible = "shared-dma-pool";
+4022-			reg = <0x10040000 0x1000>;
+4023-			no-map;
+4024-			phandle = <0x6f>;
+4025-		};
+4026-
+4027-		vdev0vring1@10041000 {
+4028-			compatible = "shared-dma-pool";
+4029-			reg = <0x10041000 0x1000>;
+4030-			no-map;
+4031-			phandle = <0x70>;
+4032-		};
+4033-
+4034-		vdev0buffer@10042000 {
+4035-			compatible = "shared-dma-pool";
+4036-			reg = <0x10042000 0x4000>;
+4037-			no-map;
+4038-			phandle = <0x71>;
+4039-		};
+4040-
+4041-		mcu-rsc-table@10048000 {
+4042-			compatible = "shared-dma-pool";
+4043-			reg = <0x10048000 0x8000>;
+4044-			no-map;
+4045-			phandle = <0x72>;
+4046-		};
+4047-
+4048-		mcuram@30000000 {
+4049-			compatible = "shared-dma-pool";
+4050-			reg = <0x30000000 0x40000>;
+4051-			no-map;
+4052-			phandle = <0x6d>;
+4053-		};
+4054-
+4055-		retram@38000000 {
+4056-			compatible = "shared-dma-pool";
+4057-			reg = <0x38000000 0x10000>;
+4058-			no-map;
+4059-			phandle = <0x6c>;
+4060-		};
+4061-
+4062-		gpu@d4000000 {
+4063-			reg = <0xd4000000 0x4000000>;
+4064-			no-map;
+4065-			phandle = <0x145>;
+4066-		};
+4067-
+4068-		linux,cma {
+4069-			compatible = "shared-dma-pool";
+4070-			reusable;
+4071-			size = <0x8000000>;
+4072-			alignment = <0x2000>;
+4073-			linux,cma-default;
+4074-		};
+4075-	};
+4076-
+4077-	memory@c0000000 {
+4078-		device_type = "memory";
+4079-		reg = <0xc0000000 0x20000000>;
+4080-	};
+4081-
+4082-	aliases {
+4083-		i2c4 = "/soc/bus@5c007000/i2c@5c002000";
+4084-		i2c1 = "/soc/bus@5c007000/i2c@40012000";
+4085-		i2c2 = "/soc/bus@5c007000/i2c@40013000";
+4086-		i2c5 = "/soc/bus@5c007000/i2c@40015000";
+4087-		serial0 = "/soc/bus@5c007000/serial@40010000";
+4088-		serial2 = "/soc/bus@5c007000/serial@4000e000";
+4089-		serial5 = "/soc/bus@5c007000/serial@40011000";
+4090-		serial7 = "/soc/bus@5c007000/serial@40018000";
+4091-		serial8 = "/soc/bus@5c007000/serial@40019000";
+4092-	};
+4093-
+4094-	chosen {
+4095-		stdout-path = "serial0:115200n8";
+4096-	};
+4097-
+4098-	vin {
+4099-		compatible = "regulator-fixed";
+4100-		regulator-name = "vin";
+4101-		regulator-min-microvolt = <0x4c4b40>;
+4102-		regulator-max-microvolt = <0x4c4b40>;
+4103-		regulator-always-on;
+4104-		phandle = <0x63>;
+4105-	};
+4106-
+4107-	led {
+4108-		compatible = "gpio-leds";
+4109-
+4110-		red1 {
+4111-			label = "LED1_RED";
+4112-			gpios = <0x60 0x06 0x01>;
+4113-			linux,default-trigger = "heartbeat";
+4114-			status = "okay";
+4115-			default-state = "off";
+4116-		};
+4117-
+4118-		green1 {
+4119-			label = "LED1_GRN";
+4120-			gpios = <0x60 0x07 0x01>;
+4121-			status = "okay";
+4122-			default-state = "on";
+4123-		};
+4124-
+4125-		red2 {
+4126-			label = "LED2_RED";
+4127-			gpios = <0x12 0x08 0x01>;
+4128-			status = "okay";
+4129-			default-state = "off";
+4130-		};
+4131-
+4132-		green2 {
+4133-			label = "LED2_GRN";
+4134-			gpios = <0x12 0x09 0x01>;
+4135-			default-state = "off";
+4136-		};
+4137-	};
+4138-
+4139-	__symbols__ {
+4140-		cpu0 = "/cpus/cpu@0";
+4141-		cpu1 = "/cpus/cpu@1";
+4142-		cpu0_opp_table = "/cpu0-opp-table";
+4143-		arm_wdt = "/watchdog";
+4144-		intc = "/interrupt-controller@a0021000";
+4145-		pd_core_ret = "/pm_domain/core-ret-power-domain@1";
+4146-		pd_core = "/pm_domain/core-ret-power-domain@1/core-power-domain@2";
+4147-		cpu_thermal = "/thermal-zones/cpu-thermal";
+4148-		cpu_alert = "/thermal-zones/cpu-thermal/trips/cpu-alert";
+4149-		booster = "/regulator-booster";
+4150-		sram4 = "/soc/sram@10050000";
+4151-		hsem = "/soc/hwspinlock@4c000000";
+4152-		ipcc = "/soc/mailbox@4c001000";
+4153-		rcc = "/soc/rcc@50000000";
+4154-		pwr_regulators = "/soc/pwr@50001000";
+4155-		reg11 = "/soc/pwr@50001000/reg11";
+4156-		reg18 = "/soc/pwr@50001000/reg18";
+4157-		usb33 = "/soc/pwr@50001000/usb33";
+4158-		pwr_mcu = "/soc/pwr-mcu@50001014";
+4159-		pwr_irq = "/soc/pwr@50001020";
+4160-		pinctrl = "/soc/pinctrl@50002000";
+4161-		gpioa = "/soc/pinctrl@50002000/gpio@50002000";
+4162-		gpiob = "/soc/pinctrl@50002000/gpio@50003000";
+4163-		gpioc = "/soc/pinctrl@50002000/gpio@50004000";
+4164-		gpiod = "/soc/pinctrl@50002000/gpio@50005000";
+4165-		gpioe = "/soc/pinctrl@50002000/gpio@50006000";
+4166-		gpiof = "/soc/pinctrl@50002000/gpio@50007000";
+4167-		gpiog = "/soc/pinctrl@50002000/gpio@50008000";
+4168-		gpioh = "/soc/pinctrl@50002000/gpio@50009000";
+4169-		gpioi = "/soc/pinctrl@50002000/gpio@5000a000";
+4170-		gpioj = "/soc/pinctrl@50002000/gpio@5000b000";
+4171-		gpiok = "/soc/pinctrl@50002000/gpio@5000c000";
+4172-		fdcan1_pins_mx = "/soc/pinctrl@50002000/fdcan1_mx-0";
+4173-		fdcan1_sleep_pins_mx = "/soc/pinctrl@50002000/fdcan1_sleep_mx-0";
+4174-		i2c1_pins_mx = "/soc/pinctrl@50002000/i2c1_mx-0";
+4175-		i2c1_sleep_pins_mx = "/soc/pinctrl@50002000/i2c1_sleep_mx-0";
+4176-		i2c2_pins_mx = "/soc/pinctrl@50002000/i2c2_mx-0";
+4177-		i2c2_sleep_pins_mx = "/soc/pinctrl@50002000/i2c2_sleep_mx-0";
+4178-		i2c5_pins_mx = "/soc/pinctrl@50002000/i2c5_mx-0";
+4179-		i2c5_sleep_pins_mx = "/soc/pinctrl@50002000/i2c5_sleep_mx-0";
+4180-		sdmmc1_pins_mx = "/soc/pinctrl@50002000/sdmmc1_mx-0";
+4181-		sdmmc1_opendrain_pins_mx = "/soc/pinctrl@50002000/sdmmc1_opendrain_mx-0";
+4182-		sdmmc1_sleep_pins_mx = "/soc/pinctrl@50002000/sdmmc1_sleep_mx-0";
+4183-		spi2_pins_mx = "/soc/pinctrl@50002000/spi2_mx-0";
+4184-		spi2_sleep_pins_mx = "/soc/pinctrl@50002000/spi2_sleep_mx-0";
+4185-		spi4_pins_mx = "/soc/pinctrl@50002000/spi4_mx-0";
+4186-		spi4_sleep_pins_mx = "/soc/pinctrl@50002000/spi4_sleep_mx-0";
+4187-		tim1_pins_mx = "/soc/pinctrl@50002000/tim1_mx-0";
+4188-		tim1_sleep_pins_mx = "/soc/pinctrl@50002000/tim1_sleep_mx-0";
+4189-		tim12_pwm_pins_mx = "/soc/pinctrl@50002000/tim12_pwm_mx-0";
+4190-		tim12_pwm_sleep_pins_mx = "/soc/pinctrl@50002000/tim12_pwm_sleep_mx-0";
+4191-		tim3_pwm_pins_mx = "/soc/pinctrl@50002000/tim3_pwm_mx-0";
+4192-		tim3_pwm_sleep_pins_mx = "/soc/pinctrl@50002000/tim3_pwm_sleep_mx-0";
+4193-		tim4_pwm_pins_mx = "/soc/pinctrl@50002000/tim4_pwm_mx-0";
+4194-		tim4_pwm_sleep_pins_mx = "/soc/pinctrl@50002000/tim4_pwm_sleep_mx-0";
+4195-		tim8_pins_mx = "/soc/pinctrl@50002000/tim8_mx-0";
+4196-		tim8_sleep_pins_mx = "/soc/pinctrl@50002000/tim8_sleep_mx-0";
+4197-		uart4_pins_mx = "/soc/pinctrl@50002000/uart4_mx-0";
+4198-		uart4_idle_pins_mx = "/soc/pinctrl@50002000/uart4_idle_mx-0";
+4199-		uart4_sleep_pins_mx = "/soc/pinctrl@50002000/uart4_sleep_mx-0";
+4200-		uart5_pins_mx = "/soc/pinctrl@50002000/uart5_mx-0";
+4201-		uart5_idle_pins_mx = "/soc/pinctrl@50002000/uart5_idle_mx-0";
+4202-		uart5_sleep_pins_mx = "/soc/pinctrl@50002000/uart5_sleep_mx-0";
+4203-		uart7_pins_mx = "/soc/pinctrl@50002000/uart7_mx-0";
+4204-		uart7_idle_pins_mx = "/soc/pinctrl@50002000/uart7_idle_mx-0";
+4205-		uart7_sleep_pins_mx = "/soc/pinctrl@50002000/uart7_sleep_mx-0";
+4206-		uart8_pins_mx = "/soc/pinctrl@50002000/uart8_mx-0";
+4207-		uart8_idle_pins_mx = "/soc/pinctrl@50002000/uart8_idle_mx-0";
+4208-		uart8_sleep_pins_mx = "/soc/pinctrl@50002000/uart8_sleep_mx-0";
+4209-		usart2_pins_mx = "/soc/pinctrl@50002000/usart2_mx-0";
+4210-		usart2_idle_pins_mx = "/soc/pinctrl@50002000/usart2_idle_mx-0";
+4211-		usart2_sleep_pins_mx = "/soc/pinctrl@50002000/usart2_sleep_mx-0";
+4212-		exti = "/soc/interrupt-controller@5000d000";
+4213-		syscfg = "/soc/syscon@50020000";
+4214-		dts = "/soc/thermal@50028000";
+4215-		hdp = "/soc/pinctrl@5002a000";
+4216-		dbg_bus = "/soc/bus@50080000";
+4217-		cs_funnel = "/soc/bus@50080000/funnel@50091000";
+4218-		funnel_in_port0 = "/soc/bus@50080000/funnel@50091000/in-ports/port@0/endpoint";
+4219-		funnel_in_port1 = "/soc/bus@50080000/funnel@50091000/in-ports/port@1/endpoint";
+4220-		funnel_in_port2 = "/soc/bus@50080000/funnel@50091000/in-ports/port@2/endpoint";
+4221-		funnel_out_port = "/soc/bus@50080000/funnel@50091000/out-ports/port/endpoint";
+4222-		cs_etf = "/soc/bus@50080000/etf@50092000";
+4223-		etf_in_port = "/soc/bus@50080000/etf@50092000/in-ports/port/endpoint";
+--
+4456:		mcuram2 = "/reserved-memory/mcuram2@10000000";
+4457:		vdev0vring0 = "/reserved-memory/vdev0vring0@10040000";
+4458:		vdev0vring1 = "/reserved-memory/vdev0vring1@10041000";
+4459:		vdev0buffer = "/reserved-memory/vdev0buffer@10042000";
+4460:		mcu_rsc_table = "/reserved-memory/mcu-rsc-table@10048000";
+4461:		mcuram = "/reserved-memory/mcuram@30000000";
+4462:		retram = "/reserved-memory/retram@38000000";
+4463:		gpu_reserved = "/reserved-memory/gpu@d4000000";
+4464-		vin = "/vin";
+4465-	};
+4466-};

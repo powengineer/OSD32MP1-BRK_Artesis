@@ -1,0 +1,5 @@
+MANIFEST_VERSION = openstlinux-6.6-yocto-scarthgap-mpu-v26.06.10
+KERNEL_DT = ./DeviceTree/MCM_OSD32MP1_M4/kernel
+OPTEE_DT = ./DeviceTree/MCM_OSD32MP1_M4/optee-os
+UBOOT_DT = ./DeviceTree/MCM_OSD32MP1_M4/u-boot
+TFA_DT = ./DeviceTree/MCM_OSD32MP1_M4/tf-a
