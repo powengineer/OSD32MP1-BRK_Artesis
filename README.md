@@ -1,0 +1,1 @@
+# OSD32MP1-BRK_Artesis
